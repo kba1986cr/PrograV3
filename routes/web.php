@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome')->name('home');
 Route::view('nosotros', 'about')->name('about');
 Route::view('contacto', 'contact')->name('contact');
-// Route::view('inicio', 'loggin')->name('loggin'); 
+Route::view('inicio', 'loggin')->name('loggin')->middleware('auth');; 
 
 
 
 
-Route::get('/inicio', [PostController::class, 'index'])->name('loggin')->middleware('auth');
-Route::post('/gestionarTurno', [PostController::class, 'gestionarTurno']);
-Route::post('/gestionar-turno', [PostController::class, 'gestionarTurno'])->name('gestionar-turno');
+// Route::get('/inicio', [PostController::class, 'index'])->name('loggin')->middleware('auth');
+// Route::post('/gestionarTurno', [PostController::class, 'gestionarTurno']);
+// Route::post('/gestionar-turno', [PostController::class, 'gestionarTurno'])->name('gestionar-turno');
 
 // Route::get('inicio', [PostController::class, 'index'])->name('loggin');
 // Route::post('turnos', [CalendarioController::class, 'store']);

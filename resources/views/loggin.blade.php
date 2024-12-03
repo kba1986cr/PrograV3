@@ -233,7 +233,7 @@
     </div>
 </x-layout> --}}
 
-<x-app-layout meta-title="Login Title" meta-description="Login Description">
+{{-- <x-app-layout meta-title="Login Title" meta-description="Login Description">
     <div class="mx-auto mt-4 max-w-6xl">
        
         <!-- Título Principal -->
@@ -294,11 +294,10 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app-layout>  ESTE ESTA FUNCIONAL --}}
 
-{{-- <x-layout meta-titlle="Loggin title" meta-description="Loggin description">
+<x-app-layout meta-titlle="Loggin title" meta-description="Loggin description">
     <div class="mx-auto mt-4 max-w-6xl">
         <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Loggin</h1>
     </div>
-
-</x-layout> --}}
+</x-app-layout>
