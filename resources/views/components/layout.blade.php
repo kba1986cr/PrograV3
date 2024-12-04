@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $metaTitle ?? 'Default title' }}</title>
     <meta name="description" content="{{ $metaDescription ?? 'Default description' }}" />
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-    @vite(['resources/css/app.css', 'resources/css/styleIndex.css', 'resources/js/app.js', 'resources/js/scriptIndex.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/css/styleIndex.css', 'resources/js/app.js', 'resources/js/scriptIndex.js']) --}}
 
 </head>
 
