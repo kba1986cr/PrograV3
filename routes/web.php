@@ -1,26 +1,22 @@
 <?php
 
-// use App\Http\Controllers\CalendarioController;
-use App\Http\Controllers\ProfileController; 
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\CalendarioController;
+use App\Http\Controllers\ProfileController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 Route::view('nosotros', 'about')->name('about');
 Route::view('contacto', 'contact')->name('contact');
-Route::view('inicio', 'loggin')->name('loggin')->middleware('auth');; 
+// Route::view('inicio', 'loggin')->name('loggin');
 
+Route::get('loggin', [CalendarioController::class, 'index'])->name('loggin')->middleware('auth');
 
+// Route::get('/calendario', [CalendarioController::class, 'index']);
+// Route::post('/calendario/guardar', [CalendarioController::class, 'guardar']);
+// Route::put('/calendario/actualizar/{id}', [CalendarioController::class, 'actualizar']);
+// Route::delete('/calendario/eliminar/{id}', [CalendarioController::class, 'eliminar']);
 
-
-// Route::get('/inicio', [PostController::class, 'index'])->name('loggin')->middleware('auth');
-// Route::post('/gestionarTurno', [PostController::class, 'gestionarTurno']);
-// Route::post('/gestionar-turno', [PostController::class, 'gestionarTurno'])->name('gestionar-turno');
-
-// Route::get('inicio', [PostController::class, 'index'])->name('loggin');
-// Route::post('turnos', [CalendarioController::class, 'store']);
-// Route::put('turnos/{id}', [CalendarioController::class, 'update']);
-// Route::delete('turnos/{id}', [CalendarioController::class, 'destroy']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

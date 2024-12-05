@@ -233,12 +233,12 @@
     </div>
 </x-layout> --}}
 
-{{-- <x-app-layout meta-title="Login Title" meta-description="Login Description">
+<x-app-layout meta-title="Login Title" meta-description="Login Description">
     <div class="mx-auto mt-4 max-w-6xl">
-       
+
         <!-- Título Principal -->
         <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Calendario</h1>
-                
+
         <div class="main-content flex">
             <!-- Sección Izquierda (60%) -->
             <div class="left-section w-3/5 px-4">
@@ -290,15 +290,21 @@
                     <!-- Scroll de Meses -->
                     <div class="month-scroll overflow-y-auto max-h-64" id="month-scroll"></div>
                 </div>
-                <div class="div">Hola</div>
+                <div class="div">
+                    @foreach ($turnos as $turno)
+                        <h1>
+                            <a href="/loggin/{{ $turno->id }}"> {{ $turno->nota }}
+                        </h1>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
-</x-app-layout>  ESTE ESTA FUNCIONAL --}}
+</x-app-layout>
 
-<x-app-layout meta-titlle="Loggin title" meta-description="Loggin description">
+{{-- <x-layout meta-titlle="Loggin title" meta-description="Loggin description">
     <div class="mx-auto mt-4 max-w-6xl">
         <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Loggin</h1>
     </div>
 
-</x-app-layout>
+</x-layout> --}}
