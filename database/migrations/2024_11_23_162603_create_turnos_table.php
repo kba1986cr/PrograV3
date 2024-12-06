@@ -11,14 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Schema::create('turnos', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->date('dia');
+        //     $table->string('turno');
+        //     $table->time('hora_inicio')->nullable();
+        //     $table->time('hora_fin')->nullable();
+        //     $table->text('nota')->nullable();
+        //     $table->timestamps();
+        // });
         Schema::create('turnos', function (Blueprint $table) {
             $table->id();
-            $table->date('dia');
-            $table->string('turno');
-            $table->time('hora_inicio')->nullable();
-            $table->time('hora_fin')->nullable();
-            $table->text('nota')->nullable();
-            $table->timestamps();
+            $table->date('fecha'); // Fecha específica
+            $table->string('turno'); // Nombre del turno
+            $table->time('hora_inicio')->nullable(); // Hora de inicio
+            $table->time('hora_fin')->nullable(); // Hora de fin
+            $table->text('nota')->nullable(); // Notas del turno
+            $table->timestamps(); // Tiempos de creación y actualización
         });
     }
 

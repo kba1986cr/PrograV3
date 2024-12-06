@@ -4,6 +4,28 @@
 @tailwind utilities;
 
 
+#calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.dia {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dia:hover {
+  background-color: #ddd;
+}
+
+#detalle-dia {
+  margin-top: 20px;
+}
+
+/* hhh */
 
 .main-content {
   display: flex;

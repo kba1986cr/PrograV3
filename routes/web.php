@@ -10,13 +10,29 @@ Route::view('nosotros', 'about')->name('about');
 Route::view('contacto', 'contact')->name('contact');
 // Route::view('inicio', 'loggin')->name('loggin');
 
-Route::get('loggin', [CalendarioController::class, 'index'])->name('loggin')->middleware('auth');
+// Route::get('loggin', [CalendarioController::class, 'index'])->name('loggin')->middleware('auth');
 
 // Route::get('/calendario', [CalendarioController::class, 'index']);
 // Route::post('/calendario/guardar', [CalendarioController::class, 'guardar']);
 // Route::put('/calendario/actualizar/{id}', [CalendarioController::class, 'actualizar']);
 // Route::delete('/calendario/eliminar/{id}', [CalendarioController::class, 'eliminar']);
 
+// Rutas principales
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+
+// Rutas del calendario
+Route::middleware('auth')->group(function () {
+    
+    Route::get('loggin', [CalendarioController::class, 'index'])->name('loggin');
+
+    Route::get('/turnos/{fecha}', [CalendarioController::class, 'show']);
+
+    Route::post('turnos', [CalendarioController::class, 'store']);
+    Route::put('turnos/{id}', [CalendarioController::class, 'update']);
+    Route::delete('turnos/{id}', [CalendarioController::class, 'destroy']);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,4 +44,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Rutas de autenticación
 require __DIR__.'/auth.php';
