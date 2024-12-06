@@ -66,6 +66,34 @@ function renderCalendar(month, year) {
   }
 }
 
+//Evento que capture el día seleccionado. 
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.day').forEach(day => {
+      day.addEventListener('click', async function () {
+          const fecha = this.dataset.fecha; // Asegúrate de que cada día tiene data-fecha
+          const detalleDia = document.getElementById('detalle-dia');
+          
+          try {
+              const response = await fetch(`/turnos/${fecha}`);
+              const data = await response.json();
+
+              if (data.success) {
+                  detalleDia.innerHTML = `<div class="mb-2">
+                      Nota: ${data.turno.nota}
+                  </div>`;
+              } else {
+                  detalleDia.innerHTML = `<div class="text-red-500">${data.message}</div>`;
+              }
+
+              detalleDia.classList.remove('hidden'); // Mostrar la sección
+          } catch (error) {
+              console.error('Error:', error);
+          }
+      });
+  });
+});
+
+
 // Evento para cambiar entre turnos
 turnoSelect.addEventListener("change", (e) => {
   const turnoIndex = e.target.value;

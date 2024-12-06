@@ -18,16 +18,16 @@ Route::view('contacto', 'contact')->name('contact');
 // Route::delete('/calendario/eliminar/{id}', [CalendarioController::class, 'eliminar']);
 
 // Rutas principales
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
 // Rutas del calendario
 Route::middleware('auth')->group(function () {
     
     Route::get('loggin', [CalendarioController::class, 'index'])->name('loggin');
 
-    Route::get('/turnos/{fecha}', [CalendarioController::class, 'show']);
+    Route::get('/turnos/{fecha}', [CalendarioController::class, 'show'])->name('turnos.show');
 
     Route::post('turnos', [CalendarioController::class, 'store']);
     Route::put('turnos/{id}', [CalendarioController::class, 'update']);

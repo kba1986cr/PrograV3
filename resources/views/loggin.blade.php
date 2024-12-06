@@ -35,10 +35,27 @@
                         </div>
                         <textarea id="nota" class="nota w-full border rounded p-2" placeholder="Notas del día..."></textarea>
                         <div class="actions mt-4 flex gap-2">
-                            <button class="boton bg-blue-500 text-white px-4 py-2 rounded" onclick="guardar()">Guardar</button>
-                            <button class="boton bg-yellow-500 text-white px-4 py-2 rounded hidden" onclick="actualizar()">Actualizar</button>
-                            <button class="boton bg-red-500 text-white px-4 py-2 rounded hidden" onclick="eliminar()">Eliminar</button>
+                            <button class="boton bg-blue-500 text-white px-4 py-2 rounded"
+                                onclick="guardar()">Guardar</button>
+                            <button class="boton bg-yellow-500 text-white px-4 py-2 rounded hidden"
+                                onclick="actualizar()">Actualizar</button>
+                            <button class="boton bg-red-500 text-white px-4 py-2 rounded hidden"
+                                onclick="eliminar()">Eliminar</button>
                         </div>
+                    </div>
+                </section>
+                <section class="retractable-section mt-4">
+                    {{-- <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia">
+                        @dump('turnos')
+                        @foreach ($turnos as $turno)
+                            <div class="mb-2">
+                                <a href="/loggin/{{ $turno->id }}"
+                                    class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
+                            </div>
+                        @endforeach
+                    </div> --}}
+                    <div class="day" data-fecha="2024-12-06">
+                        <!-- Contenido del día -->
                     </div>
                 </section>
             </div>
@@ -53,7 +70,8 @@
                 <div class="div mt-4 border p-4 rounded shadow-md">
                     @foreach ($turnos as $turno)
                         <div class="mb-2">
-                            <a href="/loggin/{{ $turno->id }}" class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
+                            <a href="/loggin/{{ $turno->id }}"
+                                class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
                         </div>
                     @endforeach
                 </div>
