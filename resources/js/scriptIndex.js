@@ -1,3 +1,4 @@
+// Elementos del DOM
 const calendario = document.getElementById("calendario");
 const monthScroll = document.getElementById("month-scroll");
 const detalleDia = document.getElementById("detalle-dia");
@@ -6,24 +7,19 @@ const turnoSelect = document.getElementById("turno-select");
 const horaInicio = document.getElementById("hora-inicio");
 const horaFin = document.getElementById("hora-fin");
 const nota = document.getElementById("nota");
+
+// Variables globales
 let selectedDay;
 let selectedTurno;
 let existeRegistro = false;
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
 
 const months = [
-  "Enero",
-  "Febrero",
-  "Marzo",
-  "Abril",
-  "Mayo",
-  "Junio",
-  "Julio",
-  "Agosto",
-  "Septiembre",
-  "Octubre",
-  "Noviembre",
-  "Diciembre",
+  "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
 ];
+
 const turnos = [
   { nombre: "Administrativo", horas: { general: ["16:00", "22:00"] } },
   { nombre: "Citas", horas: { general: ["03:00", "06:00"] } },
@@ -31,45 +27,8 @@ const turnos = [
   { nombre: "2do Turno", horas: { general: ["03:00", "14:00"] } },
   { nombre: "3er Turno", horas: { general: ["14:00", "22:00"] } },
 ];
-let currentMonth = new Date().getMonth();
-let currentYear = new Date().getFullYear();
 
-// function renderCalendar(month, year) {
-//   calendario.innerHTML = "";
-//   const daysInMonth = new Date(year, month + 1, 0).getDate();
-//   for (let i = 1; i <= daysInMonth; i++) {
-//     const dia = document.createElement("div");
-//     dia.classList.add("dia");
-//     dia.innerText = `Día ${i}`;
-
-//     dia.addEventListener("click", () => {
-//       selectedDay = i;
-//       diaSeleccionado.innerText = `Día seleccionado: ${selectedDay}`;
-//       detalleDia.style.display = "block";
-//       turnoSelect.innerHTML = '<option value="">Seleccionar Turno</option>';
-
-//       turnos.forEach((turno, index) => {
-//         const option = document.createElement("option");
-//         option.value = index;
-//         option.textContent = turno.nombre;
-//         turnoSelect.appendChild(option);
-//       });
-
-//       // Reset y esconder inputs al cambiar de día
-//       turnoSelect.value = "";
-//       horaInicio.value = "";
-//       horaInicio.classList.add("hidden");
-//       horaFin.value = "";
-//       horaFin.classList.add("hidden");
-//       nota.value = "";
-//     });
-
-//     calendario.appendChild(dia);
-//   }
-// }
-
-// Añade eventos al selector de turnos y muestra las horas adecuadas
-
+// Función para renderizar el calendario
 function renderCalendar(month, year) {
   calendario.innerHTML = "";
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -84,12 +43,10 @@ function renderCalendar(month, year) {
       const selectedMonth = months[month];
       const selectedYear = year;
 
-      // Mostrar la fecha completa en el formato solicitado
       diaSeleccionado.innerText = `Fecha: ${selectedDay} de ${selectedMonth} de ${selectedYear}`;
       detalleDia.style.display = "block";
-      
+
       turnoSelect.innerHTML = '<option value="">Seleccionar Turno</option>';
-      
       turnos.forEach((turno, index) => {
         const option = document.createElement("option");
         option.value = index;
@@ -97,7 +54,6 @@ function renderCalendar(month, year) {
         turnoSelect.appendChild(option);
       });
 
-      // Reset y esconder inputs al cambiar de día
       turnoSelect.value = "";
       horaInicio.value = "";
       horaInicio.classList.add("hidden");
@@ -110,6 +66,7 @@ function renderCalendar(month, year) {
   }
 }
 
+// Evento para cambiar entre turnos
 turnoSelect.addEventListener("change", (e) => {
   const turnoIndex = e.target.value;
   if (turnoIndex) {
@@ -126,139 +83,7 @@ turnoSelect.addEventListener("change", (e) => {
   }
 });
 
-function createDayElement(day) {
-  const dia = document.createElement("div");
-  dia.classList.add("dia");
-  dia.innerText = `Día ${day}`;
-
-  dia.addEventListener("click", () => handleDayClick(day));
-
-  return dia;
-}
-
-function handleDayClick(day) {
-  selectedDay = day;
-  diaSeleccionado.innerText = `Día seleccionado: ${selectedDay}`;
-  detalleDia.style.display = "block";
-
-  populateTurnoSelect();
-  resetInputs();
-  checkRegistro(selectedDay, turnoSelect.value);
-}
-
-function populateTurnoSelect() {
-  turnoSelect.innerHTML = '<option value="">Seleccionar Turno</option>';
-  turnos.forEach((turno, index) => {
-    const option = document.createElement("option");
-    option.value = index;
-    option.textContent = turno.nombre;
-    turnoSelect.appendChild(option);
-  });
-}
-
-function resetInputs() {
-  turnoSelect.value = "";
-  horaInicio.value = "";
-  horaInicio.classList.add("hidden");
-  horaFin.value = "";
-  horaFin.classList.add("hidden");
-  nota.value = "";
-}
-
-function checkRegistro(dia, turnoIndex) {
-  // Aquí deberías hacer una llamada AJAX para comprobar si existe un registro
-  const existe = Math.random() < 0.5; // Simulación: 50% de chance de que exista un registro
-  existeRegistro = existe;
-
-  toggleActionButtons(existeRegistro);
-}
-
-function toggleActionButtons(existe) {
-  const buttons = document.querySelectorAll(".actions button");
-  buttons[1].style.display = existe ? "inline" : "none"; // Botón Actualizar
-  buttons[2].style.display = existe ? "inline" : "none"; // Botón Eliminar
-}
-
-function enviarSolicitud(accion) {
-  if (!validarFormulario()) return;
-
-  const params = new URLSearchParams({
-    dia: selectedDay,
-    turno: turnos[turnoSelect.value].nombre,
-    hora_inicio: horaInicio.value,
-    hora_fin: horaFin.value,
-    nota: nota.value,
-    accion: accion,
-  });
-
-  fetch("index.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: params,
-  })
-    .then((response) => response.text())
-    .then((data) => alert(data))
-    .catch((error) => console.error("Error:", error));
-}
-
-function changeYear(offset) {
-  currentYear += offset;
-  renderMonthScroll();
-  renderCalendar(currentMonth, currentYear);
-}
-
-function validarFormulario() {
-  if (!turnoSelect.value || !horaInicio.value || !horaFin.value) {
-    alert("Por favor, completa todos los campos antes de guardar.");
-    return false;
-  }
-  return true;
-}
-
-// async function guardar() {
-//   const response = await fetch('/turnos', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({
-//           dia: selectedDay,
-//           turno: turnoSelect.value,
-//           hora_inicio: horaInicio.value,
-//           hora_fin: horaFin.value,
-//           nota: nota.value
-//       })
-//   });
-//   const data = await response.json();
-//   console.log(data);
-// }
-
-// function actualizar() {
-//   enviarSolicitud("actualizar");
-// }
-
-// function eliminar() {
-//   enviarSolicitud("eliminar");
-// }
-
-async function guardar() {
-  const payload = {
-    fecha: `${selectedYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(selectedDay).padStart(2, '0')}`,
-    turno: turnos[turnoSelect.value].nombre,
-    hora_inicio: horaInicio.value,
-    hora_fin: horaFin.value,
-    nota: nota.value,
-  };
-
-  const response = await fetch('/turnos', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-
-  const data = await response.json();
-  alert(data.message);
-}
-
-
+// Función para renderizar la barra de meses
 function renderMonthScroll() {
   monthScroll.innerHTML = "";
   months.forEach((month, index) => {
@@ -273,32 +98,41 @@ function renderMonthScroll() {
   });
 }
 
+// Evento para cambiar de año con el scroll
 monthScroll.addEventListener("wheel", (event) => {
   event.preventDefault();
   currentYear += event.deltaY < 0 ? 1 : -1;
   renderMonthScroll();
 });
 
+// Función para alternar el menú lateral
 function toggleMenu() {
   const menuContent = document.querySelector(".menu-content");
   menuContent.classList.toggle("active");
 }
 
-function cerrarSesion() {
-  window.location.href = "login.php";
-}
-turnoSelect.addEventListener("change", function () {
-  const turnoIndex = turnoSelect.value;
-  if (turnoIndex) {
-    horaInicio.classList.remove("hidden");
-    horaFin.classList.remove("hidden");
-  } else {
-    horaInicio.classList.add("hidden");
-    horaFin.classList.add("hidden");
-  }
-});
-
+// Inicialización del calendario y barra de meses
 renderMonthScroll();
 renderCalendar(currentMonth, currentYear);
 
+// --- Aquí comienzan los bloques comentados ---
 
+// // Función para guardar datos (descomentarlo si decides usarlo)
+// async function guardar() {
+//   const payload = {
+//     fecha: `${selectedYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(selectedDay).padStart(2, '0')}`,
+//     turno: turnos[turnoSelect.value].nombre,
+//     hora_inicio: horaInicio.value,
+//     hora_fin: horaFin.value,
+//     nota: nota.value,
+//   };
+
+//   const response = await fetch('/turnos', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(payload),
+//   });
+
+//   const data = await response.json();
+//   alert(data.message);
+// }
