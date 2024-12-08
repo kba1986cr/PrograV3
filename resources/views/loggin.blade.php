@@ -1,4 +1,5 @@
 <x-app-layout meta-title="Calendario Interactivo" meta-description="Gestión de Turnos y Calendarios">
+
     <div class="mx-auto mt-4 max-w-6xl">
         <!-- Título Principal -->
         <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Calendario</h1>
@@ -7,6 +8,16 @@
             <!-- Sección Izquierda (Calendario) -->
             <div class="left-section w-3/5 px-4">
                 <header class="mb-4 font-bold text-lg">Seleccione un día para gestionar su turno</header>
+                <div class="div border p-4 rounded shadow-md">
+                    <form action="{{ route('registrarDatos') }}" method="GET">
+                        <button type="submit" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out border-2 border-transparent rounded-md dark:text-sky-200 bg-sky-800 hover:bg-sky-700 active:bg-sky-700 focus:outline-none focus:border-sky-500">
+                            Datos
+                        </button>
+                    </form>
+                    
+                    <button class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out  border-2 border-transparent rounded-md dark:text-sky-200 bg-sky-800 hover:bg-sky-700 active:bg-sky-700 focus:outline-none focus:border-sky-500" type="submit">Enviar</button>
+
+                </div>
                 <div class="div border p-4 rounded shadow-md">
                     <div class="content">
                         <div class="calendar" id="calendar">

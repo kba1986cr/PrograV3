@@ -8,6 +8,7 @@ const horaInicio = document.getElementById("hora-inicio");
 const horaFin = document.getElementById("hora-fin");
 const nota = document.getElementById("nota");
 
+
 // Variables globales
 let selectedDay;
 let selectedTurno;
