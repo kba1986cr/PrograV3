@@ -1,4 +1,5 @@
 <x-app-layout meta-title="Calendario Interactivo" meta-description="Gestión de Turnos y Calendarios">
+
     <div class="mx-auto mt-4 max-w-6xl">
         <!-- Título Principal -->
         <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-200 text-center mb-8">Calendario</h1>
@@ -7,6 +8,16 @@
             <!-- Sección Izquierda (Calendario) -->
             <div class="left-section w-3/5 px-4">
                 <header class="mb-4 text-center font-semi-bold text-lg">Seleccione un día para gestionar su turno</header>
+                <div class="div border p-4 rounded shadow-md">
+                    <form action="{{ route('registrarDatos') }}" method="GET">
+                        <button type="submit" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out border-2 border-transparent rounded-md dark:text-sky-200 bg-sky-800 hover:bg-sky-700 active:bg-sky-700 focus:outline-none focus:border-sky-500">
+                            Datos
+                        </button>
+                    </form>
+                    
+                    <button class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out  border-2 border-transparent rounded-md dark:text-sky-200 bg-sky-800 hover:bg-sky-700 active:bg-sky-700 focus:outline-none focus:border-sky-500" type="submit">Enviar</button>
+
+                </div>
                 <div class="div border p-4 rounded shadow-md">
                     <div class="content">
                         <div class="calendar" id="calendar">
@@ -47,11 +58,11 @@
                 </section>
                 <section class="retractable-section mt-4">
                     <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia">
-                        @dump('turnos')
-                        @foreach ($turnos as $turno)
+                        @dump('puestos')
+                        {{-- @foreach ($puestos as $puesto)
                             <div class="mb-2">
-                                <a href="/loggin/{{ $turno->id }}"
-                                    class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
+                                <a href="/loggin/{{ $puesto->id }}"
+                                    class="text-blue-500 hover:underline">{{ $puesto->nombre }}</a>
                             </div>
                         @endforeach
                         <div class="day" data-fecha="2024-12-06">
@@ -62,7 +73,7 @@
                                         class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
                                 </div>
                             @endforeach
-                        </div>
+                        </div> --}}
                     </div>
                 </section>
             </div>
@@ -75,10 +86,10 @@
                     </div>
                 </div>
                 <div class="div mt-4 border p-4 rounded shadow-md">
-                    @foreach ($turnos as $turno)
+                    @foreach ($puestos as $puesto)
                         <div class="mb-2">
-                            <a href="/loggin/{{ $turno->id }}"
-                                class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
+                            <a href="/loggin/{{ $puesto->id }}"
+                                class="text-blue-500 hover:underline">{{ $puesto->nombre }}</a>
                         </div>
                     @endforeach
                 </div>

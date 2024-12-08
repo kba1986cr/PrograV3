@@ -3,6 +3,8 @@
 use App\Http\Controllers\CalendarioController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PuestoController;
+
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
@@ -19,6 +21,10 @@ Route::get('/contact', function () {
 });
 
 Route::post('/send-message', [ContactController::class, 'sendMessage']);
+Route::view('registrarDatos', 'registrarDatos')->name('registrarDatos');
+Route::get('/registrarDatos/1', [PuestoController::class, 'show']);
+
+// Route::get('/api/eventos', [EventoController::class, 'index']);
 
 
 // Route::get('/calendario', [CalendarioController::class, 'index']);
