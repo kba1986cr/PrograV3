@@ -47,11 +47,11 @@
                 </section>
                 <section class="retractable-section mt-4">
                     <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia">
-                        @dump('turnos')
-                        @foreach ($turnos as $turno)
+                        @dump('puestos')
+                        {{-- @foreach ($puestos as $puesto)
                             <div class="mb-2">
-                                <a href="/loggin/{{ $turno->id }}"
-                                    class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
+                                <a href="/loggin/{{ $puesto->id }}"
+                                    class="text-blue-500 hover:underline">{{ $puesto->nombre }}</a>
                             </div>
                         @endforeach
                         <div class="day" data-fecha="2024-12-06">
@@ -62,7 +62,7 @@
                                         class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
                                 </div>
                             @endforeach
-                        </div>
+                        </div> --}}
                     </div>
                 </section>
             </div>
@@ -75,10 +75,10 @@
                     </div>
                 </div>
                 <div class="div mt-4 border p-4 rounded shadow-md">
-                    @foreach ($turnos as $turno)
+                    @foreach ($puestos as $puesto)
                         <div class="mb-2">
-                            <a href="/loggin/{{ $turno->id }}"
-                                class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
+                            <a href="/loggin/{{ $puesto->id }}"
+                                class="text-blue-500 hover:underline">{{ $puesto->nombre }}</a>
                         </div>
                     @endforeach
                 </div>
