@@ -15,7 +15,7 @@
 
 </head>
 
-<body class="fantialiased bg-slate-100 dark:bg-slate-900">
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
 
     <x-navigation />
     @session('status')
@@ -26,10 +26,8 @@
     </main>
 
 </body>
-<footer class="py-10 px-4">
-    <div class="mx-auto flex max-w6 flex-col items-center space-y-4 md:flex md:justify-between">
+<footer class="py-3 px-4 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200 text-center p-4 fixed bottom-0 w-full" content>
         <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
-    </div>
 </footer>
 
 

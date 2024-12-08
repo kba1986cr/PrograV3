@@ -5,6 +5,7 @@ use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ProfileController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 Route::view('/', 'welcome')->name('home');
 Route::view('nosotros', 'about')->name('about');
@@ -13,6 +14,11 @@ Route::view('contacto', 'contact')->name('contact');
 
 Route::get('loggin', [CalendarioController::class, 'index'])->name('loggin')->middleware('auth');
 Route::get('/api/eventos', [EventoController::class, 'index']);
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::post('/send-message', [ContactController::class, 'sendMessage']);
 
 
 // Route::get('/calendario', [CalendarioController::class, 'index']);

@@ -1,12 +1,12 @@
 <x-app-layout meta-title="Calendario Interactivo" meta-description="Gestión de Turnos y Calendarios">
     <div class="mx-auto mt-4 max-w-6xl">
         <!-- Título Principal -->
-        <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Calendario</h1>
+        <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-200 text-center mb-8">Calendario</h1>
 
         <div class="main-content flex">
             <!-- Sección Izquierda (Calendario) -->
             <div class="left-section w-3/5 px-4">
-                <header class="mb-4 font-bold text-lg">Seleccione un día para gestionar su turno</header>
+                <header class="mb-4 text-center font-semi-bold text-lg">Seleccione un día para gestionar su turno</header>
                 <div class="div border p-4 rounded shadow-md">
                     <div class="content">
                         <div class="calendar" id="calendar">

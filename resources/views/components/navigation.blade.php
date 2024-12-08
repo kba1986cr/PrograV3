@@ -59,7 +59,7 @@
         </div>
     </nav> --}}
 
-<nav class="bg-white border-b dark:bg-slate-900 border-slate-900/10 dark:border-slate-300/10">
+<nav class="bg-white border-b dark:bg-gray-900 border-gray-900/10 dark:border-gray-300/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->
@@ -81,19 +81,19 @@
             <div class="mx-auto">
                 <div class="flex space-x-4">
                     <a href="{{ route('home') }}"
-                        class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 dark:hover:text-white {{ request()->routeIs('home') ? 'text-sky-600 dark:text-white' : 'text-slate-400' }}">
+                        class="px-3 py-2 text-sm font-semibold rounded-md hover:text-sky-700 dark:hover:text-white {{ request()->routeIs('home') ? 'text-gray-800 dark:text-white' : 'text-slate-500' }}">
                         Home
                     </a>
                     <a href="{{ route('about') }}"
-                        class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 dark:hover:text-white {{ request()->routeIs('about') ? 'text-sky-600 dark:text-white' : 'text-slate-400' }}">
+                        class="px-3 py-2 text-sm font-semibold rounded-md hover:text-sky-700 dark:hover:text-white {{ request()->routeIs('about') ? 'text-gray-800 dark:text-white' : 'text-slate-500' }}">
                         About
                     </a>
                     <a href="{{ route('contact') }}"
-                        class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 dark:hover:text-white {{ request()->routeIs('contact') ? 'text-sky-600 dark:text-white' : 'text-slate-400' }}">
+                        class="px-3 py-2 text-sm font-semibold rounded-md hover:text-sky-700 dark:hover:text-white {{ request()->routeIs('contact') ? 'text-gray-800 dark:text-white' : 'text-slate-500' }}">
                         Contact
                     </a>
                     <a href="{{ route('loggin') }}"
-                        class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 dark:hover:text-white {{ request()->routeIs('loggin.*') ? 'text-sky-600 dark:text-white' : 'text-slate-400' }}">
+                        class="px-3 py-2 text-sm font-semibold rounded-md hover:text-sky-700 dark:hover:text-white {{ request()->routeIs('loggin.*') ? 'text-gray-800 dark:text-white' : 'text-slate-500' }}">
                         Loggin
                     </a>
                 </div>

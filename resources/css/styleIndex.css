@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "popins", sans-serif; /* Fuente principal */
+}	
+
 /* Estilos para el calendario */
 #calendario {
   display: grid; /* Organiza los elementos en una cuadrícula */
@@ -200,6 +204,7 @@ footer {
   color: #fff;
   text-align: center;
   padding: 10px;
+  
 }
 
 /* Configuración de horarios */
