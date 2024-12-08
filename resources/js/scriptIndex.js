@@ -79,49 +79,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 //Evento que capture el día seleccionado. 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.day').forEach(day => {
-      day.addEventListener('click', async function () {
-          const fecha = this.dataset.fecha; // Asegúrate de que cada día tiene data-fecha
-          const detalleDia = document.getElementById('detalle-dia');
+// document.addEventListener('DOMContentLoaded', () => {
+//   document.querySelectorAll('.day').forEach(day => {
+//       day.addEventListener('click', async function () {
+//           const fecha = this.dataset.fecha; // Asegúrate de que cada día tiene data-fecha
+//           const detalleDia = document.getElementById('detalle-dia');
           
-          try {
-              const response = await fetch(`/turnos/${fecha}`);
-              const data = await response.json();
+//           try {
+//               const response = await fetch(`/turnos/${fecha}`);
+//               const data = await response.json();
 
-              if (data.success) {
-                  detalleDia.innerHTML = `<div class="mb-2">
-                      Nota: ${data.turno.nota}
-                  </div>`;
-              } else {
-                  detalleDia.innerHTML = `<div class="text-red-500">${data.message}</div>`;
-              }
+//               if (data.success) {
+//                   detalleDia.innerHTML = `<div class="mb-2">
+//                       Nota: ${data.turno.nota}
+//                   </div>`;
+//               } else {
+//                   detalleDia.innerHTML = `<div class="text-red-500">${data.message}</div>`;
+//               }
 
-              detalleDia.classList.remove('hidden'); // Mostrar la sección
-          } catch (error) {
-              console.error('Error:', error);
-          }
-      });
-  });
-});
+//               detalleDia.classList.remove('hidden'); // Mostrar la sección
+//           } catch (error) {
+//               console.error('Error:', error);
+//           }
+//       });
+//   });
+// });
 
 
 // Evento para cambiar entre turnos
-turnoSelect.addEventListener("change", (e) => {
-  const turnoIndex = e.target.value;
-  if (turnoIndex) {
-    const turnoSeleccionado = turnos[turnoIndex];
-    horaInicio.classList.remove("hidden");
-    horaFin.classList.remove("hidden");
-    horaInicio.min = turnoSeleccionado.horas.general[0];
-    horaInicio.max = turnoSeleccionado.horas.general[1];
-    horaFin.min = turnoSeleccionado.horas.general[0];
-    horaFin.max = turnoSeleccionado.horas.general[1];
-  } else {
-    horaInicio.classList.add("hidden");
-    horaFin.classList.add("hidden");
-  }
-});
+// turnoSelect.addEventListener("change", (e) => {
+//   const turnoIndex = e.target.value;
+//   if (turnoIndex) {
+//     const turnoSeleccionado = turnos[turnoIndex];
+//     horaInicio.classList.remove("hidden");
+//     horaFin.classList.remove("hidden");
+//     horaInicio.min = turnoSeleccionado.horas.general[0];
+//     horaInicio.max = turnoSeleccionado.horas.general[1];
+//     horaFin.min = turnoSeleccionado.horas.general[0];
+//     horaFin.max = turnoSeleccionado.horas.general[1];
+//   } else {
+//     horaInicio.classList.add("hidden");
+//     horaFin.classList.add("hidden");
+//   }
+// });
 
 // Función para renderizar la barra de meses
 function renderMonthScroll() {
@@ -146,10 +146,10 @@ monthScroll.addEventListener("wheel", (event) => {
 });
 
 // Función para alternar el menú lateral
-function toggleMenu() {
-  const menuContent = document.querySelector(".menu-content");
-  menuContent.classList.toggle("active");
-}
+// function toggleMenu() {
+//   const menuContent = document.querySelector(".menu-content");
+//   menuContent.classList.toggle("active");
+// }
 
 // Inicialización del calendario y barra de meses
 renderMonthScroll();
