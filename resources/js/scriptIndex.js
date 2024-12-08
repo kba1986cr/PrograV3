@@ -73,6 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     locale: 'es',
+    events: '/eventos', // Ruta para cargar eventos
+    dateClick: function (info) {
+        // Abre un modal o formulario para crear el evento.
+    }
   });
   calendar.render();
 });
