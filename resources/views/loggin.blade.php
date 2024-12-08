@@ -9,8 +9,9 @@
                 <header class="mb-4 font-bold text-lg">Seleccione un día para gestionar su turno</header>
                 <div class="div border p-4 rounded shadow-md">
                     <div class="content">
-                        <div class="calendario grid grid-cols-7 gap-2" id="calendario">
+                        <div class="calendar" id="calendar">
                             <!-- Calendario generado dinámicamente -->
+                            {{-- <div id='calendar'></div> --}}
                         </div>
                     </div>
                 </div>
@@ -45,7 +46,7 @@
                     </div>
                 </section>
                 <section class="retractable-section mt-4">
-                    {{-- <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia">
+                    <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia">
                         @dump('turnos')
                         @foreach ($turnos as $turno)
                             <div class="mb-2">
@@ -53,9 +54,15 @@
                                     class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
                             </div>
                         @endforeach
-                    </div> --}}
-                    <div class="day" data-fecha="2024-12-06">
-                        <!-- Contenido del día -->
+                        <div class="day" data-fecha="2024-12-06">
+                            @dump('turnos')
+                            @foreach ($turnos as $turno)
+                                <div class="mb-2">
+                                    <a href="/loggin/{{ $turno->id }}"
+                                        class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </section>
             </div>
@@ -77,6 +84,8 @@
                 </div>
             </div>
         </div>
-        <script src="{{ asset('js/scriptIndex.js') }}"></script>
+        {{-- <script src="{{ asset('js/scriptIndex.js') }}"></script> --}}
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     </div>
+
 </x-app-layout>

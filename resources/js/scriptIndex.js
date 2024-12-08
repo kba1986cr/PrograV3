@@ -29,42 +29,54 @@ const turnos = [
 ];
 
 // Función para renderizar el calendario
-function renderCalendar(month, year) {
-  calendario.innerHTML = "";
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+// function renderCalendar(month, year) {
+//   calendario.innerHTML = "";
+//   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  for (let i = 1; i <= daysInMonth; i++) {
-    const dia = document.createElement("div");
-    dia.classList.add("dia");
-    dia.innerText = `Día ${i}`;
+//   for (let i = 1; i <= daysInMonth; i++) {
+//     const dia = document.createElement("div");
+//     dia.classList.add("dia");
+//     dia.innerText = `Día ${i}`;
 
-    dia.addEventListener("click", () => {
-      selectedDay = i;
-      const selectedMonth = months[month];
-      const selectedYear = year;
+//     dia.addEventListener("click", () => {
+//       selectedDay = i;
+//       const selectedMonth = months[month];
+//       const selectedYear = year;
 
-      diaSeleccionado.innerText = `Fecha: ${selectedDay} de ${selectedMonth} de ${selectedYear}`;
-      detalleDia.style.display = "block";
+//       diaSeleccionado.innerText = `Fecha: ${selectedDay} de ${selectedMonth} de ${selectedYear}`;
+//       detalleDia.style.display = "block";
 
-      turnoSelect.innerHTML = '<option value="">Seleccionar Turno</option>';
-      turnos.forEach((turno, index) => {
-        const option = document.createElement("option");
-        option.value = index;
-        option.textContent = turno.nombre;
-        turnoSelect.appendChild(option);
-      });
+//       turnoSelect.innerHTML = '<option value="">Seleccionar Turno</option>';
+//       turnos.forEach((turno, index) => {
+//         const option = document.createElement("option");
+//         option.value = index;
+//         option.textContent = turno.nombre;
+//         turnoSelect.appendChild(option);
+//       });
 
-      turnoSelect.value = "";
-      horaInicio.value = "";
-      horaInicio.classList.add("hidden");
-      horaFin.value = "";
-      horaFin.classList.add("hidden");
-      nota.value = "";
-    });
+//       turnoSelect.value = "";
+//       horaInicio.value = "";
+//       horaInicio.classList.add("hidden");
+//       horaFin.value = "";
+//       horaFin.classList.add("hidden");
+//       nota.value = "";
+//     });
 
-    calendario.appendChild(dia);
-  }
-}
+//     calendario.appendChild(dia);
+//   }
+// }
+
+//Full Calendar el de arriba es e hice
+
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    locale: 'es',
+  });
+  calendar.render();
+});
+
 
 //Evento que capture el día seleccionado. 
 document.addEventListener('DOMContentLoaded', () => {

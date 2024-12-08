@@ -75,3 +75,64 @@ class CalendarioController extends Controller
         }
     }
 }
+
+// class CalendarioController extends Controller
+// {
+//     Renderizar la vista del calendario con los turnos
+//     public function index()
+//     {
+//         return view('loggin');
+//     }
+
+//     Obtener los turnos para un mes específico
+//     public function getTurnosByMonth($year, $month)
+//     {
+//         $turnos = Turno::whereYear('fecha', $year)
+//             ->whereMonth('fecha', $month)
+//             ->get();
+
+//         return response()->json(['turnos' => $turnos]);
+//     }
+
+//     Guardar un nuevo turno
+//     public function store(Request $request)
+//     {
+//         $request->validate([
+//             'fecha' => 'required|date',
+//             'turno' => 'required|string',
+//             'hora_inicio' => 'nullable|date_format:H:i',
+//             'hora_fin' => 'nullable|date_format:H:i',
+//             'nota' => 'nullable|string',
+//         ]);
+
+//         Turno::create($request->all());
+
+//         return response()->json(['message' => 'Turno guardado exitosamente.']);
+//     }
+
+//     Actualizar un turno existente
+//     public function update(Request $request, $id)
+//     {
+//         $turno = Turno::findOrFail($id);
+
+//         $request->validate([
+//             'fecha' => 'required|date',
+//             'turno' => 'required|string',
+//             'hora_inicio' => 'nullable|date_format:H:i',
+//             'hora_fin' => 'nullable|date_format:H:i',
+//             'nota' => 'nullable|string',
+//         ]);
+
+//         $turno->update($request->all());
+
+//         return response()->json(['message' => 'Turno actualizado exitosamente.']);
+//     }
+
+//     Eliminar un turno
+//     public function destroy($id)
+//     {
+//         Turno::findOrFail($id)->delete();
+
+//         return response()->json(['message' => 'Turno eliminado exitosamente.']);
+//     }
+// }
