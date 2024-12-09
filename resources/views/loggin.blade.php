@@ -1,5 +1,4 @@
 <x-app-layout meta-title="Calendario Interactivo" meta-description="Gestión de Turnos y Calendarios">
-
     <div class="mx-auto mt-4 max-w-6xl">
         <!-- Título Principal -->
         <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-200 text-center mb-8">Calendario</h1>
@@ -16,6 +15,30 @@
                             Configuración
                         </button>
                     </form>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Launch demo modal
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Contenido del modal -->
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="div border p-4 rounded shadow-md">
                     <div class="content">
@@ -27,8 +50,8 @@
                 </div>
 
                 <!-- Detalle del Día Seleccionado -->
-                <section class="retractable-section mt-4">
-                    <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia">
+                {{-- <section class="retractable-section mt-4">
+                    <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia-1">
                         <h3 id="dia-seleccionado" class="mb-2 text-lg font-bold">Día Seleccionado:</h3>
                         <label for="turno-select" class="block mb-2 font-medium">Turno:</label>
                         <select id="turno-select" class="turno-select mb-2 w-full border rounded p-2">
@@ -46,22 +69,17 @@
                         </div>
                         <textarea id="nota" class="nota w-full border rounded p-2" placeholder="Notas del día..."></textarea>
                         <div class="actions mt-4 flex gap-2">
-                            <button class="boton bg-blue-500 text-white px-4 py-2 rounded"
-                                onclick="guardar()">Guardar</button>
-                            <button class="boton bg-yellow-500 text-white px-4 py-2 rounded hidden"
-                                onclick="actualizar()">Actualizar</button>
-                            <button class="boton bg-red-500 text-white px-4 py-2 rounded hidden"
-                                onclick="eliminar()">Eliminar</button>
+                            <button class="boton bg-blue-500 text-white px-4 py-2 rounded" onclick="guardar()">Guardar</button>
+                            <button class="boton bg-yellow-500 text-white px-4 py-2 rounded hidden" onclick="actualizar()">Actualizar</button>
+                            <button class="boton bg-red-500 text-white px-4 py-2 rounded hidden" onclick="eliminar()">Eliminar</button>
                         </div>
                     </div>
                 </section>
                 <section class="retractable-section mt-4">
-                    <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia">
-                        <div class="mb-2">
-
-                        </div>
+                    <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia-2">
+                        <div class="mb-2"></div>
                     </div>
-                </section>
+                </section> --}}
             </div>
 
             <!-- Sección Derecha (Opciones y Turnos) -->
@@ -74,8 +92,7 @@
                 <div class="div mt-4 border p-4 rounded shadow-md">
                     @foreach ($puestos as $puesto)
                         <div class="mb-2">
-                            <a href="/loggin/{{ $puesto->id }}"
-                                class="text-blue-500 hover:underline">{{ $puesto->nombre }}</a>
+                            <a href="/loggin/{{ $puesto->id }}" class="text-blue-500 hover:underline">{{ $puesto->nombre }}</a>
                         </div>
                     @endforeach
                     @foreach ($puestos as $puesto)
@@ -87,8 +104,9 @@
                 </div>
             </div>
         </div>
-        {{-- <script src="{{ asset('js/scriptIndex.js') }}"></script> --}}
-        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     </div>
 
+    <!-- Scripts de Bootstrap y FullCalendar -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> --}}
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
 </x-app-layout>

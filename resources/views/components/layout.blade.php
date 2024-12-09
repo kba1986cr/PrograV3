@@ -13,22 +13,26 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
     <script src="{{ url('fullcalendar/es.global.js') }}"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body class="bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
 
     <x-navigation />
+    
     @session('status')
         <div>{{ $value }}</div>
     @endsession
+    
     <main class="flex-1 p-4">
         {{ $slot }}
     </main>
-
+    
 </body>
-<footer class="py-3 px-4 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200 text-center p-4 fixed bottom-0 w-full" content>
-        <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
-</footer>
 
+<footer class="py-3 px-4 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200 text-center p-4 fixed bottom-0 w-full">
+    <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+</footer>
 
 </html>

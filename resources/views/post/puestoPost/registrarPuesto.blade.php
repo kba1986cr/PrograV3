@@ -1,5 +1,6 @@
 
 <x-app-layout meta-title="Gestión de Puestos" meta-description="Formulario para gestionar puestos y sus salarios">
+    <x-navigationDos />
     <div class="mx-auto mt-4 max-w-6xl">
         <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Gestión de Puestos</h1>
 
@@ -186,4 +187,5 @@
             }).catch(err => console.error(err));
         });
     </script>
+    
 </x-app-layout>
