@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Puesto extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = ['nombre', 'salario_base'];
 
     public function eventos()

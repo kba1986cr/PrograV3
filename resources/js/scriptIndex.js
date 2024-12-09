@@ -8,7 +8,6 @@ const horaInicio = document.getElementById("hora-inicio");
 const horaFin = document.getElementById("hora-fin");
 const nota = document.getElementById("nota");
 
-
 // Variables globales
 let selectedDay;
 let selectedTurno;
@@ -29,43 +28,6 @@ const turnos = [
   { nombre: "3er Turno", horas: { general: ["14:00", "22:00"] } },
 ];
 
-// Función para renderizar el calendario
-// function renderCalendar(month, year) {
-//   calendario.innerHTML = "";
-//   const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-//   for (let i = 1; i <= daysInMonth; i++) {
-//     const dia = document.createElement("div");
-//     dia.classList.add("dia");
-//     dia.innerText = `Día ${i}`;
-
-//     dia.addEventListener("click", () => {
-//       selectedDay = i;
-//       const selectedMonth = months[month];
-//       const selectedYear = year;
-
-//       diaSeleccionado.innerText = `Fecha: ${selectedDay} de ${selectedMonth} de ${selectedYear}`;
-//       detalleDia.style.display = "block";
-
-//       turnoSelect.innerHTML = '<option value="">Seleccionar Turno</option>';
-//       turnos.forEach((turno, index) => {
-//         const option = document.createElement("option");
-//         option.value = index;
-//         option.textContent = turno.nombre;
-//         turnoSelect.appendChild(option);
-//       });
-
-//       turnoSelect.value = "";
-//       horaInicio.value = "";
-//       horaInicio.classList.add("hidden");
-//       horaFin.value = "";
-//       horaFin.classList.add("hidden");
-//       nota.value = "";
-//     });
-
-//     calendario.appendChild(dia);
-//   }
-// }
 
 //Full Calendar el de arriba es e hice
 
@@ -81,52 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   calendar.render();
 });
-
-
-//Evento que capture el día seleccionado. 
-// document.addEventListener('DOMContentLoaded', () => {
-//   document.querySelectorAll('.day').forEach(day => {
-//       day.addEventListener('click', async function () {
-//           const fecha = this.dataset.fecha; // Asegúrate de que cada día tiene data-fecha
-//           const detalleDia = document.getElementById('detalle-dia');
-          
-//           try {
-//               const response = await fetch(`/turnos/${fecha}`);
-//               const data = await response.json();
-
-//               if (data.success) {
-//                   detalleDia.innerHTML = `<div class="mb-2">
-//                       Nota: ${data.turno.nota}
-//                   </div>`;
-//               } else {
-//                   detalleDia.innerHTML = `<div class="text-red-500">${data.message}</div>`;
-//               }
-
-//               detalleDia.classList.remove('hidden'); // Mostrar la sección
-//           } catch (error) {
-//               console.error('Error:', error);
-//           }
-//       });
-//   });
-// });
-
-
-// Evento para cambiar entre turnos
-// turnoSelect.addEventListener("change", (e) => {
-//   const turnoIndex = e.target.value;
-//   if (turnoIndex) {
-//     const turnoSeleccionado = turnos[turnoIndex];
-//     horaInicio.classList.remove("hidden");
-//     horaFin.classList.remove("hidden");
-//     horaInicio.min = turnoSeleccionado.horas.general[0];
-//     horaInicio.max = turnoSeleccionado.horas.general[1];
-//     horaFin.min = turnoSeleccionado.horas.general[0];
-//     horaFin.max = turnoSeleccionado.horas.general[1];
-//   } else {
-//     horaInicio.classList.add("hidden");
-//     horaFin.classList.add("hidden");
-//   }
-// });
 
 // Función para renderizar la barra de meses
 function renderMonthScroll() {
@@ -150,34 +66,9 @@ monthScroll.addEventListener("wheel", (event) => {
   renderMonthScroll();
 });
 
-// Función para alternar el menú lateral
-// function toggleMenu() {
-//   const menuContent = document.querySelector(".menu-content");
-//   menuContent.classList.toggle("active");
-// }
 
 // Inicialización del calendario y barra de meses
 renderMonthScroll();
 renderCalendar(currentMonth, currentYear);
 
-// --- Aquí comienzan los bloques comentados ---
 
-// // Función para guardar datos (descomentarlo si decides usarlo)
-// async function guardar() {
-//   const payload = {
-//     fecha: `${selectedYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(selectedDay).padStart(2, '0')}`,
-//     turno: turnos[turnoSelect.value].nombre,
-//     hora_inicio: horaInicio.value,
-//     hora_fin: horaFin.value,
-//     nota: nota.value,
-//   };
-
-//   const response = await fetch('/turnos', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(payload),
-//   });
-
-//   const data = await response.json();
-//   alert(data.message);
-// }

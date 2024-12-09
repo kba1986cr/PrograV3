@@ -7,16 +7,15 @@
         <div class="main-content flex">
             <!-- Sección Izquierda (Calendario) -->
             <div class="left-section w-3/5 px-4">
-                <header class="mb-4 text-center font-semi-bold text-lg">Seleccione un día para gestionar su turno</header>
+                <header class="mb-4 text-center font-semi-bold text-lg">Seleccione un día para gestionar su turno
+                </header>
                 <div class="div border p-4 rounded shadow-md">
-                    <form action="{{ route('registrarDatos') }}" method="GET">
-                        <button type="submit" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out border-2 border-transparent rounded-md dark:text-sky-200 bg-sky-800 hover:bg-sky-700 active:bg-sky-700 focus:outline-none focus:border-sky-500">
-                            Datos
+                    <form action="{{ route('registrarPuesto') }}" method="GET">
+                        <button type="submit"
+                            class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out border-2 border-transparent rounded-md dark:text-sky-200 bg-sky-800 hover:bg-sky-700 active:bg-sky-700 focus:outline-none focus:border-sky-500">
+                            Configuración
                         </button>
                     </form>
-                    
-                    <button class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out  border-2 border-transparent rounded-md dark:text-sky-200 bg-sky-800 hover:bg-sky-700 active:bg-sky-700 focus:outline-none focus:border-sky-500" type="submit">Enviar</button>
-
                 </div>
                 <div class="div border p-4 rounded shadow-md">
                     <div class="content">
@@ -58,22 +57,9 @@
                 </section>
                 <section class="retractable-section mt-4">
                     <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia">
-                        @dump('puestos')
-                        {{-- @foreach ($puestos as $puesto)
-                            <div class="mb-2">
-                                <a href="/loggin/{{ $puesto->id }}"
-                                    class="text-blue-500 hover:underline">{{ $puesto->nombre }}</a>
-                            </div>
-                        @endforeach
-                        <div class="day" data-fecha="2024-12-06">
-                            @dump('turnos')
-                            @foreach ($turnos as $turno)
-                                <div class="mb-2">
-                                    <a href="/loggin/{{ $turno->id }}"
-                                        class="text-blue-500 hover:underline">{{ $turno->nota }}</a>
-                                </div>
-                            @endforeach
-                        </div> --}}
+                        <div class="mb-2">
+
+                        </div>
                     </div>
                 </section>
             </div>
@@ -91,6 +77,12 @@
                             <a href="/loggin/{{ $puesto->id }}"
                                 class="text-blue-500 hover:underline">{{ $puesto->nombre }}</a>
                         </div>
+                    @endforeach
+                    @foreach ($puestos as $puesto)
+                        <tr>
+                            <td class="border px-4 py-2">{{ $puesto->nombre }}</td>
+                            <td class="border px-4 py-2">{{ $puesto->salario_base }}</td>
+                        </tr>
                     @endforeach
                 </div>
             </div>

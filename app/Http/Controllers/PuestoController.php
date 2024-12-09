@@ -4,67 +4,86 @@ namespace App\Http\Controllers;
 
 use App\Models\Puesto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PuestoController extends Controller
 {
-    // Muestra la lista de puestos
-    public function index()
-    {
-        return view('puestos.index', ['puestos' => Puesto::all()]);
-    }
 
-    // Muestra el formulario para crear un nuevo puesto
     public function create()
     {
-        return view('puestos.create');
+        $puestos = Puesto::all();
+        return view('post.puestoPost.registrarPuesto', compact('puestos'));
     }
 
-    // Almacena un nuevo puesto
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'salario_base' => 'required|numeric',
+            'nombre_puesto' => 'required|string|max:255',
+            'salario_puesto' => 'required|numeric',
         ]);
 
-        Puesto::create($request->all());
-        return redirect()->route('puestos.index')->with('success', 'Puesto creado exitosamente.');
+        Puesto::create([
+            'nombre' => $request->input('nombre_puesto'),
+            'salario_base' => $request->input('salario_puesto'),
+        ]);
+
+        return redirect()->back()->with('success', 'Puesto creado exitosamente.');
     }
 
-    // Muestra un puesto específico
-    public function show($id)
-    {
-        $puesto = Puesto::findOrFail($id);
-        return view('puestos.show', compact('puesto'));
-    }
-
-    // Muestra el formulario para editar un puesto existente
-    public function edit($id)
-    {
-        $puesto = Puesto::findOrFail($id);
-        return view('puestos.edit', compact('puesto'));
-    }
-
-    // Actualiza un puesto existente
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'salario_base' => 'required|numeric',
+            'nombre_puesto' => 'required|string|max:255',
+            'salario_puesto' => 'required|numeric',
         ]);
 
         $puesto = Puesto::findOrFail($id);
-        $puesto->update($request->all());
+        $puesto->update([
+            'nombre' => $request->input('nombre_puesto'),
+            'salario_base' => $request->input('salario_puesto'),
+        ]);
 
-        return redirect()->route('puestos.index')->with('success', 'Puesto actualizado exitosamente.');
+        return response()->json(['success' => true]);
     }
 
-    // Elimina un puesto
     public function destroy($id)
     {
         $puesto = Puesto::findOrFail($id);
         $puesto->delete();
 
-        return redirect()->route('puestos.index')->with('success', 'Puesto eliminado exitosamente.');
+        return response()->json(['success' => true]);
     }
+
+    //     public function store(Request $request)
+    //     {
+    //         $request->validate([
+    //             'nombre_puesto' => 'required|string|max:255', // nombre del campo en el formulario
+    //             'salario_puesto' => 'required|numeric', // nombre del campo en el formulario
+    //         ]);
+
+    //         // Crear un nuevo puesto
+    //         Puesto::create([
+    //             'nombre' => $request->input('nombre_puesto'), // nombre del campo en el formulario
+    //             'salario_base' => $request->input('salario_puesto'), // nombre del campo en el formulario
+    //         ]);
+
+    //         return redirect()->back()->with('success', 'Puesto creado exitosamente.');
+    //     }
+
+    //     // public function index()
+    //     // {
+
+    //     //     return view('puestos.index', ['puestos' => Puesto::all()]);
+    //     // }
+
+    //     public function create()
+    // {
+    //     $puestos = Puesto::all();
+    //     return view('post.puestoPost.registrarPuesto', compact('puestos'));
+    // }
+
 }
+
+
+// $puestos = Puesto::all();
+// return view('puestos.index', compact('puestos'));

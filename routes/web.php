@@ -15,39 +15,12 @@ Route::view('contacto', 'contact')->name('contact');
 // Route::view('inicio', 'loggin')->name('loggin');
 
 Route::get('loggin', [CalendarioController::class, 'index'])->name('loggin')->middleware('auth');
-Route::get('/api/eventos', [EventoController::class, 'index']);
-Route::get('/contact', function () {
-    return view('contact');
-});
+// Route::view('registrarPuesto', 'post.puestoPost.registrarPuesto')->name('registrarPuesto');
+Route::get('registrarPuesto', [PuestoController::class, 'create'])->name('registrarPuesto');
 
-Route::post('/send-message', [ContactController::class, 'sendMessage']);
-Route::view('registrarDatos', 'registrarDatos')->name('registrarDatos');
-Route::get('/registrarDatos/1', [PuestoController::class, 'show']);
-
-// Route::get('/api/eventos', [EventoController::class, 'index']);
+Route::resource('puestos', PuestoController::class);
 
 
-// Route::get('/calendario', [CalendarioController::class, 'index']);
-// Route::post('/calendario/guardar', [CalendarioController::class, 'guardar']);
-// Route::put('/calendario/actualizar/{id}', [CalendarioController::class, 'actualizar']);
-// Route::delete('/calendario/eliminar/{id}', [CalendarioController::class, 'eliminar']);
-
-// Rutas principales
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('home');
-
-// Rutas del calendario    
-// Route::middleware('auth')->group(function () {
-    
-//     Route::get('loggin', [CalendarioController::class, 'index'])->name('loggin');
-
-//     Route::get('/turnos/{fecha}', [CalendarioController::class, 'show'])->name('turnos.show');;
-
-//     Route::post('turnos', [CalendarioController::class, 'store']);
-//     Route::put('turnos/{id}', [CalendarioController::class, 'update']);
-//     Route::delete('turnos/{id}', [CalendarioController::class, 'destroy']);
-// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -8,7 +8,7 @@
     <title>{{ $metaTitle ?? 'Default title' }}</title>
     <meta name="description" content="{{ $metaDescription ?? 'Default description' }}" />
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-    @vite(['resources/css/app.css', 'resources/css/styleIndex.css', 'resources/js/app.js', 'resources/js/scriptIndex.js'])
+    @vite(['resources/css/app.css', 'resources/css/styleIndex.css', 'resources/js/app.js', 'resources/js/scriptIndex.js', 'resources/js/scriptRegistrarPuesto.js'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
     <script src="{{ url('fullcalendar/es.global.js') }}"></script>
@@ -32,4 +32,3 @@
 
 
 </html>
- 

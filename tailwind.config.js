@@ -8,7 +8,7 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './resources/css/styleIndex.css',  'resources/js/scriptIndex.js', //añadi esto aca
+        './resources/css/styleIndex.css',  '/resources/js/scriptIndex.js', '/resources/js/scriptRegistrarPuesto.js',//añadi esto aca
     ],
 
     theme: {
