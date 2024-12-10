@@ -57,11 +57,28 @@
                         </div>
                     </form>
                 </div>
-                <div class="div border p-4 rounded shadow-md">
+                <div class="div max-w-full border p-4 shadow-md">
                     <div class="content">
                         <div class="calendar" id="calendar">
                             <!-- Calendario generado dinámicamente -->
                             {{-- <div id='calendar'></div> --}}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div id="dateModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+                    <div class="bg-white rounded-lg shadow-lg w-1/3">
+                        <div class="border-b px-4 py-2 flex justify-between items-center">
+                            <h3 class="font-semibold text-lg">Seleccionar fechas</h3>
+                            <button id="closeModal" class="text-gray-600 hover:text-gray-800">&times;</button>
+                        </div>
+                        <div class="p-4">
+                            <p id="selectedDates" class="text-gray-700">No hay fechas seleccionadas.</p>
+                        </div>
+                        <div class="flex justify-end p-4 border-t">
+                            <button id="cancelModal" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mr-2">Cancelar</button>
+                            <button id="saveModal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Guardar</button>
                         </div>
                     </div>
                 </div>

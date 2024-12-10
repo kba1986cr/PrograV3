@@ -1,4 +1,4 @@
-<nav class="bg-white border-b dark:bg-gray-900 border-gray-900/10 dark:border-gray-300/10">
+<nav class="bg-gray-200 dark:bg-gray-800 dark:text-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->

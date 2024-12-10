@@ -8,11 +8,47 @@ use App\Models\Puesto;
 
 class CalendarioController extends Controller
 {
+
+    /**
+     * Manejar la selección de días en el calendario.
+     */
+    public function store(Request $request)
+    {
+        // Asegúrate de que las fechas se reciban correctamente
+    $start = $request->input('start');
+    $end = $request->input('end');
+
+    // Valida las fechas (si es necesario)
+    if (!$start || !$end) {
+        return response()->json(['error' => 'Fechas inválidas'], 400);
+    }
+
+        // Aquí puedes guardar los datos en la base de datos o realizar otra acción
+        // Ejemplo: Registrar en la base de datos (opcional)
+        /*
+        DB::table('calendar_selections')->insert([
+            'start_date' => $start,
+            'end_date' => $end,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        */
+
+        // Retornar una respuesta en JSON
+        return response()->json([
+            'message' => 'Fechas seleccionadas correctamente',
+            'start' => $start,
+            'end' => $end,
+        ]);
+    }
     // Renderizar la vista del calendario con los turnos
     public function index()
     {
         $puestos = Puesto::all();
         return view('loggin', ['puestos' => $puestos]);
+    }
+
+     
     }
 
     // // Guardar un nuevo turno
@@ -74,7 +110,7 @@ class CalendarioController extends Controller
     //         ]);
     //     }
     // }
-}
+
 
 // class CalendarioController extends Controller
 // {

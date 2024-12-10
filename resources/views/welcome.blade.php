@@ -1,7 +1,7 @@
 <x-layout meta-titlle="Home title" meta-description="Home description">
 
  <!-- Contenedor principal -->
- <section class="flex items-center justify-between px-10 py-20 shadow-lg">
+ <section class="flex items-center justify-between px-10 py-20 ">
     <!-- Imagen a la izquierda -->
     <div class="w-1/2">
         <img src="{{ asset('storage\img\calendar.jpg') }}" alt="Imagen" class="w-4/5 h-auto rounded shadow-md">
@@ -15,7 +15,7 @@
         <p class="text-lg text-gray-800 dark:text-gray-300 mb-6">
             Dudas de tus horas laborales, nosotros te ayudamos a organizarlas.
         </p>
-        <a href="#cta" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">¡Comienza Ahora!</a>
+        <a href="#cta" class="bg-blue-600 text-white px-6 py-3 no-underline rounded-lg shadow-md hover:bg-blue-700 transition duration-300">¡Comienza Ahora!</a>
     </div>
 </section>
 
