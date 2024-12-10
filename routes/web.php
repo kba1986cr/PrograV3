@@ -15,11 +15,10 @@ Route::view('contacto', 'contact')->name('contact');
 // Route::view('inicio', 'loggin')->name('loggin');
 
 Route::get('loggin', [CalendarioController::class, 'index'])->name('loggin')->middleware('auth');
-// Route::view('registrarPuesto', 'post.puestoPost.registrarPuesto')->name('registrarPuesto');
 Route::get('registrarPuesto', [PuestoController::class, 'create'])->name('registrarPuesto');
-
 Route::resource('puestos', PuestoController::class);
-
+Route::get('registrarHorarios', [EventoController::class, 'create'])->name('registrarHorarios');
+Route::resource('horarios', EventoController::class);
 
 
 Route::get('/dashboard', function () {
