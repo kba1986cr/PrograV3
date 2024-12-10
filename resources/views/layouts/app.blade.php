@@ -11,6 +11,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
 
     <!-- resources/views/layouts/app.blade.php -->
     {{-- <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
@@ -18,7 +20,10 @@
 
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-    @vite(['resources/css/app.css', 'resources/css/styleIndex.css', 'resources/js/app.js', 'resources/js/scriptIndex.js'])
+    @vite(['resources/css/app.css', 'resources/css/styleIndex.css', 'resources/js/app.js', 'resources/js/scriptIndex.js', 'resources/js/scriptRegistrarPuesto.js'])
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    
 </head>
 
 <body class="font-sans antialiased">
@@ -39,6 +44,7 @@
             {{ $slot }}
         </main>
     </div>
+    
 </body>
 
 </html>

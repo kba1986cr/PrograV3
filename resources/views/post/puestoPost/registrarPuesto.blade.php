@@ -1,4 +1,3 @@
-
 <x-app-layout meta-title="Gestión de Puestos" meta-description="Formulario para gestionar puestos y sus salarios">
     <x-navigationDos />
     <div class="mx-auto mt-4 max-w-6xl">
@@ -65,12 +64,14 @@
                 </thead>
                 <tbody id="tabla-puestos">
                     @foreach ($puestos as $puesto)
-                        <tr data-id="{{ $puesto->id }}" data-nombre="{{ $puesto->nombre }}" data-salario="{{ $puesto->salario_base }}">
+                        <tr data-id="{{ $puesto->id }}" data-nombre="{{ $puesto->nombre }}"
+                            data-salario="{{ $puesto->salario_base }}">
                             {{-- <td class="border px-4 py-2">{{ $puesto->id }}</td> --}}
                             <td class="border px-4 py-2">{{ $puesto->nombre }}</td>
                             <td class="border px-4 py-2">{{ $puesto->salario_base }}</td>
                             <td class="border px-4 py-2">
-                                <button type="button" class="seleccionar bg-blue-500 text-white px-2 py-1 rounded">Seleccionar</button>
+                                <button type="button"
+                                    class="seleccionar bg-blue-500 text-white px-2 py-1 rounded">Seleccionar</button>
                             </td>
                         </tr>
                     @endforeach
@@ -130,62 +131,76 @@
             const nombre = nombrePuestoInput.value;
             const salario = salarioPuestoInput.value;
 
+            // Hacer la solicitud para actualizar el puesto
             fetch(`{{ url('puestos') }}/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({
-                    nombre_puesto: nombre,
-                    salario_puesto: salario
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        nombre_puesto: nombre,
+                        salario_puesto: salario
+                    })
                 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success) {
-                    alert('Puesto actualizado con éxito');
-                    // Actualizar la fila en la tabla sin recargar
-                    const row = document.querySelector(`tr[data-id="${id}"]`);
-                    row.setAttribute('data-nombre', nombre);
-                    row.setAttribute('data-salario', salario);
-                    row.children[1].textContent = nombre;
-                    row.children[2].textContent = salario;
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Puesto actualizado con éxito');
 
-                    limpiarFormulario();
-                } else {
-                    alert('Error al actualizar el puesto');
-                }
-            }).catch(err => console.error(err));
+                        // Obtener la fila correspondiente a este puesto
+                        const row = document.querySelector(`tr[data-id="${id}"]`);
+                        if (row) {
+                            // Actualizar las celdas de la fila
+                            row.setAttribute('data-nombre', nombre);
+                            row.setAttribute('data-salario', salario);
+                            row.children[0].textContent = nombre; // Columna de nombre
+                            row.children[1].textContent = salario; // Columna de salario
+                        }
+
+                        // Limpiar el formulario después de la actualización
+                        limpiarFormulario();
+                    } else {
+                        alert('Error al actualizar el puesto');
+                    }
+                })
+                .catch(err => console.error('Error:', err));
         });
+
 
         // Botón Eliminar
         btnEliminar.addEventListener('click', function() {
             const id = puestoIdInput.value;
 
-            if(!confirm('¿Estás seguro de eliminar este puesto?')) {
+            if (!confirm('¿Estás seguro de eliminar este puesto?')) {
                 return;
             }
 
             fetch(`{{ url('puestos') }}/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success) {
-                    alert('Puesto eliminado con éxito');
-                    const row = document.querySelector(`tr[data-id="${id}"]`);
-                    row.remove();
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Puesto eliminado con éxito');
+                        const row = document.querySelector(`tr[data-id="${id}"]`);
+                        row.remove();
 
-                    limpiarFormulario();
-                } else {
-                    alert('Error al eliminar el puesto');
-                }
-            }).catch(err => console.error(err));
+                        limpiarFormulario();
+                    } else {
+                        alert('Error al eliminar el puesto');
+                    }
+                }).catch(err => console.error(err));
         });
     </script>
-    
+
+    {{-- <!-- Cargar archivo JS independiente -->
+    <script src="{{ asset('js/scriptRegistrarPuesto.js') }}"></script>
+
+    <!-- Carga de scripts de Vite -->
+    @vite(['resources/js/scriptRegistrarPuesto.js']) --}}
+
 </x-app-layout>

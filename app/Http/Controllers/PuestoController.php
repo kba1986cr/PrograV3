@@ -53,6 +53,7 @@ class PuestoController extends Controller
 
         return response()->json(['success' => true]);
     }
+    
 
     //     public function store(Request $request)
     //     {
