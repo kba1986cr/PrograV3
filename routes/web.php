@@ -8,6 +8,7 @@ use App\Http\Controllers\PuestoController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use Illuminate\Http\Request;
 
 Route::view('/', 'welcome')->name('home');
 Route::view('nosotros', 'about')->name('about');
@@ -20,7 +21,17 @@ Route::get('registrarPuesto', [PuestoController::class, 'create'])->name('regist
 
 Route::resource('puestos', PuestoController::class);
 
+// Calendario 
 
+Route::get('/calendar', function () {
+    return view('calendar');
+})->name('calendar.index');
+
+Route::post('/calendar/store', [CalendarioController::class, 'store'])->name('calendar.store');
+
+
+
+// --------------------------------------------
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,3 +45,5 @@ Route::middleware('auth')->group(function () {
 
 // Rutas de autenticación
 require __DIR__.'/auth.php';
+
+

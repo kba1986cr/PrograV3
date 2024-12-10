@@ -23,6 +23,7 @@ Docs & License: https://fullcalendar.io
             list: 'Agenda',
         },
         buttonHints: {
+            
             prev: '$0 antes',
             next: '$0 siguiente',
             today(buttonText) {

@@ -31,7 +31,7 @@
     
 </body>
 
-<footer class="py-3 px-4 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200 text-center p-4 fixed bottom-0 w-full">
+<footer class="py-3 px-4 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200 allign-middle text-center p-4 fixed bottom-0 w-full">
     <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
 </footer>
 
