@@ -29,8 +29,6 @@ Route::get('/calendar', function () {
 
 Route::post('/calendar/store', [CalendarioController::class, 'store'])->name('calendar.store');
 
-
-
 // --------------------------------------------
 
 Route::get('/dashboard', function () {

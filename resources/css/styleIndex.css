@@ -45,7 +45,7 @@ body {
 
 /* Encabezado dentro de la sección izquierda */
 .left-section header {
-  background-color: #666; /* Fondo gris oscuro */
+  background-color: #cecccc; /* Fondo gris oscuro */
   color: #fff; /* Texto blanco */
   padding: 10px; /* Espaciado interno */
 }
