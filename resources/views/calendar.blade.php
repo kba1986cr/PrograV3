@@ -14,6 +14,7 @@
                     left: 'prev,next today',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    locale: 'es',
                 },
                 select: function (info) {    // Acción al seleccionar días
                     fetch('{{ route('calendar.store') }}', {

@@ -84,4 +84,5 @@ class EventoController extends Controller
             return response()->json(['error' => 'Error al eliminar el horario: ' . $e->getMessage()]);
         }
     }
+    
 }

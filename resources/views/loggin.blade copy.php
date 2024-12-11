@@ -36,7 +36,6 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <!-- Campo para seleccionar un puesto -->
                                                     <label for="puesto-select">Puesto</label>
                                                     <select name="puesto_id" id="puesto-select" class="form-control">
                                                         @foreach ($puestos as $puesto)
@@ -46,22 +45,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        {{-- <div class="row mt-3">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <!-- Campo para seleccionar un horario -->
-                                                    <label for="horario-select">Horario</label>
-                                                    <select name="horario_id" id="horario-select" class="form-control">
-                                                        @foreach ($horarios as $horario)
-                                                            <option value="{{ $horario->id }}" data-id="{{ $horario->id }}">
-                                                                {{ $horario->nombre }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>                                                                             --}}
                                         ...
                                     </div>
                                     <div class="modal-footer">
@@ -84,8 +67,7 @@
                 </div>
 
                 <!-- Modal -->
-                <div id="dateModal"
-                    class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+                <div id="dateModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
                     <div class="bg-white rounded-lg shadow-lg w-1/3">
                         <div class="border-b px-4 py-2 flex justify-between items-center">
                             <h3 class="font-semibold text-lg">Seleccionar fechas</h3>
@@ -95,10 +77,8 @@
                             <p id="selectedDates" class="text-gray-700">No hay fechas seleccionadas.</p>
                         </div>
                         <div class="flex justify-end p-4 border-t">
-                            <button id="cancelModal"
-                                class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mr-2">Cancelar</button>
-                            <button id="saveModal"
-                                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Guardar</button>
+                            <button id="cancelModal" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mr-2">Cancelar</button>
+                            <button id="saveModal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Guardar</button>
                         </div>
                     </div>
                 </div>
