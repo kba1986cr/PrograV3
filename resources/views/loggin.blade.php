@@ -84,8 +84,7 @@
                 </div>
 
                 <!-- Modal -->
-                <div id="dateModal"
-                    class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+                <  <div id="dateModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
                     <div class="bg-white rounded-lg shadow-lg w-1/3">
                         <div class="border-b px-4 py-2 flex justify-between items-center">
                             <h3 class="font-semibold text-lg">Seleccionar fechas</h3>
@@ -95,10 +94,8 @@
                             <p id="selectedDates" class="text-gray-700">No hay fechas seleccionadas.</p>
                         </div>
                         <div class="flex justify-end p-4 border-t">
-                            <button id="cancelModal"
-                                class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mr-2">Cancelar</button>
-                            <button id="saveModal"
-                                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Guardar</button>
+                            <button id="cancelModal" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mr-2">Cancelar</button>
+                            <button id="saveModal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Guardar</button>
                         </div>
                     </div>
                 </div>
@@ -132,6 +129,8 @@
                         </div>
                     </div>
                 </section>
+
+                <!-- Detalle del Día Seleccionado -->
                 <section class="retractable-section mt-4">
                     <div class="detalle-dia p-4 border rounded shadow-md hidden" id="detalle-dia-2">
                         <div class="mb-2"></div>
@@ -140,27 +139,36 @@
             </div>
 
             <!-- Sección Derecha (Opciones y Turnos) -->
-            <div class="right-section w-2/5 px-4">
-                <div class="div border p-4 rounded shadow-md">
-                    <div class="month-scroll" id="month-scroll">
-                        <!-- Scroll para meses -->
+
+            <div class="right-section w-2/5 p-10 px-4 text-gray-700 dark:text-gray-200  ">
+                <div class="m-10 p-10 dark:bg-gray-700 rounded shadow-md  ">
+                    <div class="month-scroll" id="month-scroll" >
+                        
                     </div>
                 </div>
-                <div class="div mt-4 border p-4 rounded shadow-md">
-                    @foreach ($puestos as $puesto)
-                        <div class="mb-2">
-                            <a href="/loggin/{{ $puesto->id }}"
-                                class="text-blue-500 hover:underline">{{ $puesto->nombre }}</a>
-                        </div>
-                    @endforeach
-                    @foreach ($puestos as $puesto)
-                        <tr>
-                            <td class="border px-4 py-2">{{ $puesto->nombre }}</td>
-                            <td class="border px-4 py-2">{{ $puesto->salario_base }}</td>
-                        </tr>
-                    @endforeach
-                </div>
-            </div>
+            
+
+
+                        <!-- Tabla de Puestos -->
+                        <div class="bg-white mt-4 p-4 border-l-8 border-blue-500">
+                        <table class="w-full border-collapse ">
+                            <thead>
+                                <tr class="bg-gray-100 ">
+                                    <th class="text-left px-4 py-2 border bg-gray-800">Nombre</th>
+                                    <th class="text-left px-4 py-2 border bg-gray-800">Salario Base</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($puestos as $puesto)
+                                <tr class="hover:bg-gray-50 ">
+                                    <td class="px-4 py-2 border bg-gray-600 ">{{ $puesto->nombre }}</td>
+                                    <td class="px-4 py-2 border bg-gray-600 ">{{ $puesto->salario_base }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                                  
         </div>
     </div>
 

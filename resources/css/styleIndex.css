@@ -77,13 +77,9 @@ body {
 
 /* Sección derecha */
 
+
 /* Bloques dentro de la sección derecha */
-.right-section .div {
-  background-color: #aaa; /* Fondo gris medio */
-  padding: 10px; /* Espaciado interno */
-  margin-bottom: 10px; /* Margen inferior */
-  flex: 1; /* Ocupa el espacio disponible */
-}
+
 
 /* Mensaje de carga */
 .loading {
@@ -155,13 +151,7 @@ body {
 }
 
 /* Scroll de meses */
-.month-scroll {
-  margin: 20px;
-  overflow-y: auto;
-  background-color: #2e2e2e;
-  border-radius: 5px;
-  padding: 10px;
-}
+  
 
 /* Controles del año */
 .year-controls {
@@ -174,21 +164,9 @@ body {
 }
 
 /* Elementos seleccionables del mes */
-.month-item {
-  padding: 10px;
-  cursor: pointer;
-  text-align: center;
-  background-color: #3e3e3e;
-  border-radius: 5px;
-}
 
-.month-item:hover {
-  background-color: #bb86fc; /* Cambio de color al pasar el mouse */
-}
 
-.month-item.selected {
-  background-color: #9b5dfc; /* Color para el mes seleccionado */
-}
+
 
 /* Pie de página */
 

@@ -117,7 +117,7 @@ function renderMonthScroll() {
   monthScroll.innerHTML = "";
   months.forEach((month, index) => {
     const monthItem = document.createElement("div");
-    monthItem.classList.add("month-item");
+    monthItem.classList.add("text-lg", "font-bold", "text-gray-300");
     monthItem.innerText = `${month} ${currentYear}`;
     monthItem.addEventListener("click", () => {
       currentMonth = index;
