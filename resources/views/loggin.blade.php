@@ -1,14 +1,15 @@
 <x-app-layout meta-title="Calendario Interactivo" meta-description="Gestión de Turnos y Calendarios">
-    <div class="mx-auto mt-4 max-w-6xl">
-        <!-- Título Principal -->
-        <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-200 text-center mb-8">Calendario</h1>
+    
+        <!-- Título Bienvenida -->
+        <h1 class="text-3xl mt-4 font-semibold text-gray-800 dark:text-gray-200 text-center mb-8">Calendario</h1>
 
-        <div class="main-content flex">
-            <!-- Sección Izquierda (Calendario) -->
-            <div class="left-section w-3/5 px-4">
-                <header class="mb-4 text-center font-semi-bold text-lg">Seleccione un día para gestionar su turno
-                </header>
-                <div class="div border p-4 rounded shadow-md">
+            <!-- Sección central principal -->
+            <div class="py-3 px-4 ">
+                <<div class="mx-auto max-w-6xl">
+                    <p class=" text-gray-700 dark:text-gray-200 my-4 text-1xl text-center  ">Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit
+                    </p>
+                </div>
+                <div class="flex justify-center items-center space-x-4 p-4 rounded shadow-md">
                     <form action="{{ route('registrarPuesto') }}" method="GET">
                         <button type="submit"
                             class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out border-2 border-transparent rounded-md dark:text-sky-200 bg-sky-800 hover:bg-sky-700 active:bg-sky-700 focus:outline-none focus:border-sky-500">
@@ -20,8 +21,12 @@
                             data-bs-target="#exampleModal">
                             Registrar Datos
                         </button>
+                    </div>
+
+    <section class="flex items-center justify-between px-10 py-20 ">
 
                         <!-- Modal -->
+<<<<<<< HEAD
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
@@ -68,20 +73,77 @@
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancelar</button>
                                         <button type="button" class="btn btn-primary">Registrar</button>
+=======
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Registro</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <!-- Contenido del modal -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="puesto-select">Puesto</label>
+                                        <select name="puesto_id" id="puesto-select" class="form-control">
+                                            @foreach ($puestos as $puesto)
+                                                <option value="{{ $puesto->id }}">{{ $puesto->nombre }}</option>
+                                            @endforeach
+                                        </select>
+>>>>>>> f60ac765794387100f876fa047386482ae8da9cb
                                     </div>
                                 </div>
                             </div>
+                            ...
                         </div>
-                    </form>
-                </div>
-                <div class="div max-w-full border p-4 shadow-md">
-                    <div class="content">
-                        <div class="calendar" id="calendar">
-                            <!-- Calendario generado dinámicamente -->
-                            {{-- <div id='calendar'></div> --}}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary">Registrar</button>
                         </div>
                     </div>
                 </div>
+            </div>
+        </form>
+
+                        
+                <!-- Calendario generado dinámicamente -->
+                <div class="w-3/4">
+                    <div class="calendar-container bg-white shadow-md  " >
+                        <div class="calendar" id="calendar" class=></div>
+                            <!-- Calendario aquí -->
+                        </div>
+                    </div>
+                
+                         
+                <!-- Sección Derecha (Opciones y Turnos) -->
+<div class="w-2/3 pl-10 rounded">
+    <div class="bg-white mt-4 p-4 border-l-8 border-blue-500">
+        <!-- Tabla de Puestos -->
+        <table class="w-full border-collapse">
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="text-left px-4 py-2 border">Nombre</th>
+                    <th class="text-left px-4 py-2 border">Salario Base</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($puestos as $puesto)
+                <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-2 border">{{ $puesto->nombre }}</td>
+                    <td class="px-4 py-2 border">{{ $puesto->salario_base }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
                 <!-- Modal -->
                 <  <div id="dateModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
@@ -138,6 +200,7 @@
                 </section>
             </div>
 
+<<<<<<< HEAD
             <!-- Sección Derecha (Opciones y Turnos) -->
 
             <div class="right-section w-2/5 p-10 px-4 text-gray-700 dark:text-gray-200  ">
@@ -169,8 +232,14 @@
                         </table>
                     </div>
                                   
+=======
+            
+            </div>
+>>>>>>> f60ac765794387100f876fa047386482ae8da9cb
         </div>
     </div>
+
+</section>
 
     <!-- Scripts de Bootstrap y FullCalendar -->
     <!-- Asegúrate de cargar el Bootstrap Bundle (que incluye Popper) -->
